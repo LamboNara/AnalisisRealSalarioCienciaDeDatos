@@ -165,19 +165,18 @@ predictive.columns.values
 """#ANÁLISIS PREDICTIVO"""
 
 yvar = ['salary_in_usd']
-Xvars = ['work_year', 'salary_in_usd', 'experience_level_Entry',
-       'experience_level_Expert', 'experience_level_Junior',
-       'experience_level_Senior', 'employment_type_Freelance',
-       'employment_type_Full Time', 'employment_type_Part Time',
+Xvars = ['work_year', 'salary_in_usd', 'remote_ratio',
+       'experience_level_EN', 'experience_level_EX',
+       'experience_level_MI', 'experience_level_SE', 'employment_type_FL',
+       'employment_type_FT', 'employment_type_PT',
        'job_title_Big Data Engineer', 'job_title_Data Analyst',
        'job_title_Data Architect', 'job_title_Data Engineer',
        'job_title_Data Science Manager', 'job_title_Data Scientist',
        'job_title_Director of Data Science',
        'job_title_Machine Learning Engineer',
        'job_title_Machine Learning Scientist',
-       'job_title_Research Scientist', 'remote_ratio_Fully Remote',
-       'remote_ratio_No remote work', 'remote_ratio_Partially Remote',
-       'company_size_Large', 'company_size_Medium', 'company_size_Small']
+       'job_title_Research Scientist', 'company_size_L', 'company_size_M',
+       'company_size_S']
 
 #Separando las variables
 y = predictive[yvar]
@@ -213,13 +212,14 @@ r2
 
 x_pred = pd.DataFrame({'work_year': [2020],
                        'salary_in_usd': [4000],
-                       'experience_level_Entry': [0],
-                       'experience_level_Expert': [1],
-                       'experience_level_Junior': [0],
-                       'experience_level_Senior': [0],
-                       'employment_type_Freelance': [0],
-                       'employment_type_Full Time': [0],
-                       'employment_type_Part Time': [1],
+                       'remote_ratio' : [0],
+                       'experience_level_EN': [0],
+                       'experience_level_EX': [1],
+                       'experience_level_MI': [0],
+                       'experience_level_SE': [0],
+                       'employment_type_FL': [0],
+                       'employment_type_FT': [0],
+                       'employment_type_PT': [1],
                        'job_title_Big Data Engineer': [0],
                        'job_title_Data Analyst': [0],
                        'job_title_Data Architect':[0],
@@ -230,12 +230,9 @@ x_pred = pd.DataFrame({'work_year': [2020],
                        'job_title_Machine Learning Engineer': [0],
                        'job_title_Machine Learning Scientist': [0],
                        'job_title_Research Scientist': [0],
-                       'remote_ratio_Fully Remote': [0],
-                       'remote_ratio_No remote work': [0],
-                       'remote_ratio_Partially Remote': [1],
-                       'company_size_Large': [0],
-                       'company_size_Medium': [1],
-                       'company_size_Small': [0],})
+                       'company_size_L': [0],
+                       'company_size_M': [1],
+                       'company_size_S': [0],})
 
 y_pred = modelo.predict(x_pred)
 y_pred
